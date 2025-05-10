@@ -250,11 +250,63 @@
                             <h3 class="card-title">Thông Báo</h3>
                         </div>
                         <div class="card-body">
-                            <div th:each="notification : ${notifications}">
-                                <div class="alert alert-info">
-                                    <strong th:text="${notification.getTitle()}">Tiêu đề</strong>: 
-                                    <span th:text="${notification.getContent()}">Nội dung</span><br>
-                                    <small th:text="${notification.getFormatDate()}">Ngày tháng</small>
+                            <style>
+                                .notification-item {
+                                    display: flex;
+                                    align-items: flex-start;
+                                    margin-bottom: 20px;
+                                    border: 1px solid #ddd;
+                                    border-radius: 8px;
+                                    padding: 10px;
+                                    background-color: #e0f0ff;
+                                }
+
+                                .notification-image {
+                                    width: 80px;
+                                    height: 80px;
+                                    margin-right: 15px;
+                                    flex-shrink: 0;
+                                }
+
+                                .notification-image img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                    border-radius: 8px;
+                                }
+
+                                .notification-content summary {
+                                    font-weight: bold;
+                                    font-size: 1.1rem;
+                                    cursor: pointer;
+                                    outline: none;
+                                }
+
+                                .notification-content summary::-webkit-details-marker {
+                                    display: none;
+                                }
+
+                                .notification-content details[open] summary {
+                                    margin-bottom: 8px;
+                                }
+
+                                .notification-content small {
+                                    color: gray;
+                                    font-size: 0.9em;
+                                }
+                            </style>
+
+                            <div th:each="notification : ${notifications}" class="notification-item">
+                                <div class="notification-image">
+                                    <img th:src="@{'/images/' + ${notification.type} + '.png'}"
+                                         th:alt="${notification.type}" />
+                                </div>
+                                <div class="notification-content">
+                                    <details>
+                                        <summary th:text="${notification.title}">Tiêu đề</summary>
+                                        <p th:text="${notification.content}">Nội dung</p>
+                                        <small th:text="${notification.formatDate}">Ngày tháng</small>
+                                    </details>
                                 </div>
                             </div>
                         </div>

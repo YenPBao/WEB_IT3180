@@ -13,8 +13,29 @@
 
     <!-- Đường dẫn đến file CSS -->
     <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+    html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body.img {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.ftco-section {
+    width: 100%;
+}
+    
+    </style>
 </head>
-<body class="img js-fullheight" th:style="'background-image: url(' + @{/images/bg.jpg} + ');'">
+<body class="img js-fullheight" th:style="'background-image: url(' + @{/images/imagebluemoon.jpg} + ');'">
 
 <section class="ftco-section">
     <div class="container">

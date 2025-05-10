@@ -382,25 +382,26 @@
               <thead>
                 <tr>
 				  <th class="text-center">ID</th>
-                  <th class="text-center">ID chủ căn hộ</th>
-                  <th class="text-center">Số điện thoại</th>
 				  <th class="text-center">Diện tích (m2)</th>
+				  <th class="text-center">Danh Sách Cư Dân</th>
                 </tr>
               </thead>
               <tbody>
                 <!-- Duyệt qua danh sách người dùng -->
                 <tr th:each="apartment : ${apartments}">
 				  <td class="text-center" th:text="${apartment.id}">ID</td>
-                  <td class="text-center" th:text="${apartment.idHouseholder}">ID chủ căn hộ</td>
-				  <td class="text-center" th:text="${apartment.phone}">Số điện thoại</td>
 				  <td class="text-center" th:text="${apartment.area}">Diện tích (m2)</td> 
+				   <td class="text-center" style="width: 150px;">
+				   	<div class="d-flex align-items-center justify-content-center gap-2">
+				   	<button style="border: none; background: none; padding: 5px; cursor: pointer;" class="residentButton" th:data-id="${apartment.id}">
+							<i class="fas fa-user-friends"></i>
+						</button>
+				   	</div>
+				   
+				   </td >
 				  
 				  <td class="text-center" style="width: 150px;">
 				  	<div class="d-flex align-items-center justify-content-center gap-2">
-						
-						<button style="border: none; background: none; padding: 5px; cursor: pointer;" class="residentButton" th:data-id="${apartment.id}">
-							<i class="fas fa-user-friends"></i>
-						</button>
 
 						<button type="button" class="add-resident-btn" th:data-apartment-id="${apartment.id}" style="border: none; background: none; padding: 5px; cursor: pointer;" data-toggle="modal" data-target="#modalAddResident">
 							<i class="fas fa-user-plus" style="color: #80cffa;"></i>

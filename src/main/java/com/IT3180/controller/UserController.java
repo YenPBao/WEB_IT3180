@@ -33,6 +33,18 @@ public class UserController {
     @Autowired
     private NotificationsServices notificationsServices;
 
+    @GetMapping("/dashboard")
+    public String dashboard(Model model) 
+ 	{
+    	List<Notifications> notifications = notificationsServices.getAllNotifications();
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        for (Notifications notification : notifications) {
+            // Chuyển đổi LocalDateTime thành String đã định dạng
+            notification.setFormatDate(notification.getCreatedAt().format(formatter));
+        }
+    	model.addAttribute("notifications", notifications);
+        return "user/user_dashboard";  
+    } 
     @GetMapping("/billing")
     public String billing (
             @AuthenticationPrincipal UserDetails userDetails,

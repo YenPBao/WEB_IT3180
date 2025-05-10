@@ -85,4 +85,9 @@ public class UserService {
 	 public List<LocalDate> getDueDateById(Long id){
 		 return billItemRepository.findDueDatesByUserId(id);
 	 }
+	 
+	 public List<User> findByRole(String roleName) {
+		    return userRepository.findUsersByRoles_Name(roleName);
+		}
+
 }

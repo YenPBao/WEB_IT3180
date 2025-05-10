@@ -70,12 +70,17 @@ public class AdminController {
 	    }
 	 
 	@GetMapping("/account")
-	public String account (Model model)
+	public String account (Model model,@RequestParam(name = "role", required = false) String role)
 	{
+		 List<com.IT3180.model.User> users;
+		    if (role != null && !role.isEmpty()) {
+		        users = userService.findByRole(role);  // bạn cần hàm này
+		    } else {
+		        users = userService.getAllUsers();
+		    }
+		    model.addAttribute("users", users);
 		List<Apartment> apartments = apartmentService.getAllApartments();
 		model.addAttribute("apartments", apartments);
-		List<com.IT3180.model.User> users = userService.getAllUsers();
-    	model.addAttribute("users", users);
 		return "admin/account";
 	}
 	

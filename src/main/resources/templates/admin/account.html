@@ -295,6 +295,7 @@
         <div class="card">
           <div class="card-header d-flex justify-content-between align-items-center">
  			 <h3 class="card-title mb-0">QUẢN LÍ TÀI KHOẢN</h3>
+ 		
  			  <div class="ml-auto">
   				<button type="button" class="btn btn-outline-primary btn-sm shadow-sm rounded-pill" data-toggle="modal" data-target="#modal-default">
                   <i class="fas fa-user-plus mr-1"></i> Tạo tài khoản
@@ -312,7 +313,18 @@
                   <th class="text-center">Tên đăng nhập</th>
                   <th class="text-center">Mật khẩu</th>
                   <th class="text-center">Căn hộ</th>
-                  <th class="text-center">Chức vụ</th>
+                  <th class="text-center">Chức vụ   <div class="dropdown d-inline">
+    <!-- Nút biểu tượng filter dùng làm toggle mở menu -->
+    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-filter" aria-hidden="true"></i>
+    </a>
+    <!-- Menu dropdown các vai trò -->
+    <div class="dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item" th:href="@{/admin/account(role='Ban Quản Trị')}">Ban Quản Trị</a>
+      <a class="dropdown-item" th:href="@{/admin/account(role='Cư Dân')}">Cư Dân</a>
+      <a class="dropdown-item" th:href="@{/admin/account(role='Khách')}">Khách</a>
+    </div>
+  </div></th>
                 </tr>
               </thead>
               <tbody>
