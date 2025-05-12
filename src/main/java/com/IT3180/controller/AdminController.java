@@ -104,7 +104,7 @@ public class AdminController {
 	
 	@GetMapping ("/notifications")
 	public String showSendEmailForm(Model model) {
-        List<Notifications> notifications = notificationsServices.findAll();
+        List<Notifications> notifications = notificationsServices.getAllNotifications();
         model.addAttribute("notifications", notifications);
         model.addAttribute("emailRequest", new EmailRequest());
         return "admin/notifications"; // Trả về trang Thymeleaf
